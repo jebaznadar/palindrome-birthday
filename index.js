@@ -31,6 +31,9 @@ function getDateAsString(date){
 
 }
 function getDataInAllFormats(date){
+
+    var date = getDateAsString(date) ;
+
     var ddmmyyyy = date.day + date.month + date.year 
     var mmddyyyy = date.month + date.day + date.year
     var yyyymmdd = date.year + date.month + date.day
@@ -39,5 +42,20 @@ function getDataInAllFormats(date){
     var yyddmm  = date.year.slice(-2)  + date.day + date.month ;
     return [ddmmyyyy,mmddyyyy, yyyymmdd ,ddmmyy,mmddyy,yyddmm]
 }
+
+
+function checkPalindromeForAllDateFormats(date){
+    var listOfPalindrome = getDataInAllFormats(date)
+    var flag = false; 
+    for(var i=0 ;i < listOfPalindrome.length;i++){
+        if(isStringPalindrome(listOfPalindrome[i])){
+            var flag = true 
+            break;
+        }
+    }
+    return flag
+
+}
 var date = { day:'2' , month:'4', year:'1999'}
-console.log(getDataInAllFormats(getDateAsString(date)))
+
+console.log(checkPalindromeForAllDateFormats(date))
